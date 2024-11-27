@@ -59,5 +59,3 @@
         restarted: yes
         build: yes
         state: present
-        environment:
-          ENVIRONMENT: "production"
