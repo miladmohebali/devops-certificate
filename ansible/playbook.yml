@@ -1,0 +1,67 @@
+---
+- name: Setup Server with Docker and Deploy Containers
+  hosts: all
+  become: true
+  vars_files:
+    - vars.yml
+  tasks:
+
+    # Step 1: Install prerequisites (Docker, Docker Compose)
+    - name: Install dependencies
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+          - git
+        state: present
+        update_cache: yes
+
+    - name: Add current user to the docker group (to avoid using sudo with docker)
+      user:
+        name: "{{ ansible_user }}"
+        group: docker
+        append: yes
+
+    # Step 2: Pull code from Git
+    - name: Clone project repository from Git
+      git:
+        repo: "{{ git_repo }}"
+        dest: "/home/{{ ansible_user }}/my_project"
+        version: "{{ git_branch }}"
+        force: yes
+
+    # Step 3: Setup and Deploy Docker Containers with Docker Compose
+    - name: Deploy containers using Docker Compose
+      docker_compose:
+        project_src: "/home/{{ ansible_user }}/my_project"
+        files:
+          - "docker-compose.yml"
+        restarted: yes
+        build: yes
+        state: present
+        environment:
+          ENVIRONMENT: "{{ environment }}"
+
+    # Step 4: Deploy Staging Environment
+    - name: Deploy Staging Containers using Docker Compose
+      docker_compose:
+        project_src: "/home/{{ ansible_user }}/my_project"
+        files:
+          - "docker-compose.staging.yml"
+        restarted: yes
+        build: yes
+        state: present
+        environment:
+          ENVIRONMENT: "staging"
+
+    # Step 5: Deploy Production Environment
+    - name: Deploy Production Containers using Docker Compose
+      docker_compose:
+        project_src: "/home/{{ ansible_user }}/my_project"
+        files:
+          - "docker-compose.prod.yml"
+        restarted: yes
+        build: yes
+        state: present
+        environment:
+          ENVIRONMENT: "production"

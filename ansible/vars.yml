@@ -1,0 +1,4 @@
+git_repo: "https://github.com/username/repo.git"
+git_branch: "master"
+ansible_user: "milad"
+environment: "development"  # به صورت پیش‌فرض

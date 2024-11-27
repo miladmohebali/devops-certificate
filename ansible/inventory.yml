@@ -1,0 +1,8 @@
+[development]
+dev_server_ip ansible_user=your_username
+
+[staging]
+staging_server_ip ansible_user=your_username
+
+[production]
+prod_server_ip ansible_user=your_username

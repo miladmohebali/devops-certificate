@@ -4,7 +4,6 @@ services:
     image: my-python-app
     build: .
     ports:
-      - "8081:8080"
+      - "80:8080"
     environment:
-      - ENV=staging
-
+      - ENV=production
