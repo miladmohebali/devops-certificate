@@ -9,4 +9,3 @@ COPY app.py .
 
 # Run the application
 CMD ["python", "app.py"]
-CMD ["tail", "-f", "/dev/null"]
