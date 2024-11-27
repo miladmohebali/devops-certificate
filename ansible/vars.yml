@@ -1,4 +1,6 @@
-git_repo: "/home/milad/my_project"
+
+
+git_repo: "file:///home/milad/my_project"
 git_branch: "master"
 ansible_user: "milad"
 environment: "development"  # به صورت پیش‌فرض
