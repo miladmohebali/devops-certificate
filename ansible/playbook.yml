@@ -39,8 +39,6 @@
         restarted: yes
         build: yes
         state: present
-        environment:
-          ENVIRONMENT: "{{ environment }}"
 
     # Step 4: Deploy Staging Environment
     - name: Deploy Staging Containers using Docker Compose
@@ -51,8 +49,6 @@
         restarted: yes
         build: yes
         state: present
-        environment:
-          ENVIRONMENT: "staging"
 
     # Step 5: Deploy Production Environment
     - name: Deploy Production Containers using Docker Compose
