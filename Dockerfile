@@ -6,6 +6,12 @@ WORKDIR /app
 
 # Copy the application code into the container
 COPY app.py .
+# کپی کردن اسکریپت start.sh به کانتینر
+COPY start.sh .
 
-# Run the application
-CMD ["python", "app.py"]
+# دادن مجوز اجرایی به اسکریپت
+RUN chmod +x start.sh
+
+# اجرای اسکریپت
+CMD ["python" , "app.py"]
+

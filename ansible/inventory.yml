@@ -1,8 +1,8 @@
 [development]
-192.168.200.218 ansible_user=milad become=true
+192.168.3.218 ansible_user=milad become=true
 
 [staging]
-192.168.200.218 ansible_user=milad become=true
+192.168.3.218 ansible_user=milad become=true
 
 [production]
-192.168.200.218 ansible_user=milad become=true
+192.168.3.218 ansible_user=milad become=true
