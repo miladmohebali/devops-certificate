@@ -6,12 +6,10 @@ WORKDIR /app
 
 # Copy the application code into the container
 COPY app.py .
-# کپی کردن اسکریپت start.sh به کانتینر
-COPY start.sh .
 
-# دادن مجوز اجرایی به اسکریپت
-RUN chmod +x start.sh
+# نصب Flask
+RUN pip install flask
 
-# اجرای اسکریپت
-CMD ["python" , "app.py"]
+# اجرای اپلیکیشن
+CMD ["python", "app.py"]
 
